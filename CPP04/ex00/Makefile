@@ -7,7 +7,6 @@ SRC 	=  main.cpp \
 		   AnimalWrong.cpp \
            CatWrong.cpp \
            DogWrong.cpp \
-           Brain.cpp \
 
 OBJ 	= $(patsubst %.cpp,%.o,$(SRC))
 
