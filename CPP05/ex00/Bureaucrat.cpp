@@ -55,7 +55,7 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-		return ( "[ERROR] - grade > 150" );
+	return ( "[ERROR] - grade > 150" );
 }
 
 std::string Bureaucrat::getName( void ) const {
