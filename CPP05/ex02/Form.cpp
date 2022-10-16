@@ -5,12 +5,15 @@
 #include "Form.hpp"
 
 Form::Form( void )
-			: _name( "NoName" ), _status( 0 ), _gradeForSign( 75 ), _gradeForExecute( 50 ) {
+			: _target("Nothing"), _name( "NoName" ), _status( 0 ), _gradeForSign( 75 ), _gradeForExecute( 50 ) {
 	std::cout << "Form default constructor called" << std::endl;
 }
 
-Form::Form( const std::string _name, const short _gradeForSign, const short _gradeForExecute )
-		: _name( _name ), _status( 0 ), _gradeForSign( _gradeForSign ), _gradeForExecute( _gradeForExecute ) {
+Form::Form( const std::string _name, const short _gradeForSign, const short _gradeForExecute, std::string _target )
+		: _target(_target), _name( _name ), _status( 0 ), _gradeForSign( _gradeForSign ), _gradeForExecute( _gradeForExecute ) {
+	if( this->_target == "" ) {
+		this->_target = "Nothing";
+	}
 	if( _gradeForSign < 1 || _gradeForExecute < 1 ) {
 		throw GradeTooHighException();
 	} else if( _gradeForSign > 150 || _gradeForExecute > 150 ) {
@@ -64,6 +67,14 @@ const char *Form::GradeTooLowException::what() const throw() {
 
 std::string Form::getName( void ) const {
 	return ( this->_name );
+}
+
+std::string Form::getTarget( void ) const {
+	return ( this->_target );
+}
+
+void Form::setTarget( std::string _target ) {
+	this->_target = _target;
 }
 
 bool Form::getStatus( void ) const {

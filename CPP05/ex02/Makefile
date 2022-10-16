@@ -3,6 +3,7 @@ NAME 	= Bureaucrat
 SRC 	=  main.cpp \
 		   Bureaucrat.cpp \
 		   Form.cpp \
+		   PresidentialPardonForm.cpp \
 
 OBJ 	= $(patsubst %.cpp,%.o,$(SRC))
 

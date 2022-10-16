@@ -14,7 +14,7 @@ class Form {
 public:
 	Form( void );
 	Form( const Form &obj );
-	Form( const std::string _name, const short _gradeForSign, const short _gradeForExecute );
+	Form( const std::string _name, const short _gradeForSign, const short _gradeForExecute, std::string _target );
 	virtual ~Form();
 
 	Form &operator = ( const Form &obj );
@@ -24,15 +24,11 @@ public:
 
 	std::string getName( void ) const;
 	bool getStatus( void ) const;
+	std::string getTarget( void ) const;
+	void setTarget( std::string _target );
 	void setStatus( bool _status );
 	short getGradeForSign( void ) const;
 	short getGradeForExecute( void ) const;
-
-private:
-	const std::string _name;
-	bool _status;
-	const short _gradeForSign;
-	const short _gradeForExecute;
 
 	class GradeTooHighException : public std::exception {
 	public:
@@ -43,6 +39,13 @@ private:
 	public:
 		const char *what() const throw();
 	};
+
+private:
+	std::string _target;
+	const std::string _name;
+	bool _status;
+	const short _gradeForSign;
+	const short _gradeForExecute;
 
 };
 
