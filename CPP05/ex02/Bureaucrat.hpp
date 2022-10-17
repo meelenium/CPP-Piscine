@@ -24,6 +24,7 @@ public:
 	void incrementGrade( void );
 	void decrementGrade( void );
 	void signForm( Form &form );
+	void executeForm( const Form &form );
 
 	std::string getName( void ) const;
 	short getGrade( void ) const;

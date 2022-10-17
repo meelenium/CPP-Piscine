@@ -5,6 +5,7 @@
 #ifndef CPP05_FORM_HPP
 # define CPP05_FORM_HPP
 
+# include <fstream>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;

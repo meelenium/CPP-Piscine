@@ -4,6 +4,8 @@ SRC 	=  main.cpp \
 		   Bureaucrat.cpp \
 		   Form.cpp \
 		   PresidentialPardonForm.cpp \
+		   RobotomyRequestForm.cpp \
+		   ShrubberyCreationForm.cpp \
 
 OBJ 	= $(patsubst %.cpp,%.o,$(SRC))
 
@@ -25,7 +27,7 @@ $(NAME): $(OBJ)
 re: fclean all
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJ) *_shrubbery
 
 fclean: clean
 	rm -rf $(NAME)
