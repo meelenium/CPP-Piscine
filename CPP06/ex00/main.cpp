@@ -16,5 +16,12 @@ int main( int argc, char **argv ) {
 		cast.toInt();
 		cast.toFloat();
 		cast.toDouble();
+
+		std::cout << std::endl << "If change variable yourself on \"12213.21f\"" << std::endl;
+		cast.setVariable( "12213.21f" );
+		cast.toChar();
+		cast.toInt();
+		cast.toFloat();
+		cast.toDouble();
 	}
 }

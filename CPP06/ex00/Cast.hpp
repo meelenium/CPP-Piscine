@@ -7,8 +7,6 @@
 
 # include <iostream>
 # include <string>
-# include <iomanip>
-# include <cfenv>
 
 # define DEFAULT 0
 # define INFF 1

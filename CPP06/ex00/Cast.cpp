@@ -31,7 +31,7 @@ void Cast::toChar( void ) {
 		try {
 			var = std::stoi( this->_variable.c_str() );
 			if ( var > std::numeric_limits<char>::max() \
- 				|| var < std::numeric_limits<char>::min() ) {
+ 				|| var < 0 ) {
 				std::cout << "impossible" << std::endl;
 			} else if ( !isprint(var) ) {
 				std::cout << "Non displayable" << std::endl;
