@@ -24,19 +24,19 @@ Cast &Cast::operator = ( const Cast &obj ) {
 }
 
 void Cast::toChar( void ) {
-	int iVar;
+	int var;
 
 	std::cout << "Char: ";
 	if (this->_flag == DEFAULT) {
 		try {
-			iVar = std::stoi( this->_variable.c_str() );
-			if ( iVar > std::numeric_limits<char>::max() \
- 				|| iVar < std::numeric_limits<char>::min() ) {
+			var = std::stoi( this->_variable.c_str() );
+			if ( var > std::numeric_limits<char>::max() \
+ 				|| var < std::numeric_limits<char>::min() ) {
 				std::cout << "impossible" << std::endl;
-			} else if ( !isprint(iVar) ) {
+			} else if ( !isprint(var) ) {
 				std::cout << "Non displayable" << std::endl;
 			} else {
-				std::cout << '\'' << static_cast<char>( iVar ) << '\'' << std::endl;
+				std::cout << '\'' << static_cast<char>( var ) << '\'' << std::endl;
 			}
 		} catch ( const std::out_of_range &ex ) {
 			std::cout << "impossible" << std::endl;
@@ -49,13 +49,13 @@ void Cast::toChar( void ) {
 }
 
 void Cast::toInt( void ) {
-	int iVar;
+	int var;
 
 	std::cout << "Int: ";
 	if( this->_flag == DEFAULT ) {
 		try {
-			iVar = std::stoi( this->_variable.c_str() );
-			std::cout << iVar << std::endl;
+			var = std::stoi( this->_variable.c_str() );
+			std::cout << var << std::endl;
 		} catch ( const std::out_of_range &ex ) {
 			std::cout << "impossible" << std::endl;
 		} catch ( const std::invalid_argument &ex ) {
@@ -67,14 +67,14 @@ void Cast::toInt( void ) {
 }
 
 void Cast::toFloat( void ) {
-	float iVar;
+	float var;
 
 	std::cout << "Float: ";
 	if( this->_flag == DEFAULT ) {
 		try {
-			iVar = std::stof( this->_variable.c_str() );
-			std::cout << iVar;
-			if ( iVar == static_cast<int>( iVar ) ) {
+			var = std::stof( this->_variable.c_str() );
+			std::cout << var;
+			if ( var == static_cast<int>( var ) ) {
 				std::cout << ".0f" << std::endl;
 				return ;
 			}
@@ -90,14 +90,14 @@ void Cast::toFloat( void ) {
 }
 
 void Cast::toDouble( void ) {
-	double iVar;
+	double var;
 
 	std::cout << "Double: ";
 	if( this->_flag == DEFAULT ) {
 		try {
-			iVar = std::stod( this->_variable.c_str() );
-			std::cout << iVar;
-			if ( iVar == static_cast<int>( iVar ) ) {
+			var = std::stod( this->_variable.c_str() );
+			std::cout << var;
+			if ( var == static_cast<int>( var ) ) {
 				std::cout << ".0" << std::endl;
 				return ;
 			}
