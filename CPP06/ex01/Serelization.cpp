@@ -28,5 +28,5 @@ Data* Serelization::deserialize(uintptr_t raw) {
 }
 
 Serelization::~Serelization( void ) {
-	std::cout << "destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
