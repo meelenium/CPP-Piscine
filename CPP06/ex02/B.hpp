@@ -1,0 +1,19 @@
+//
+// Created by Tile Tyuuki on 26.10.2022.
+//
+
+#ifndef B_HPP
+# define B_HPP
+
+# include "Base.hpp"
+
+class B : public Base {
+
+public:
+	~B() {
+
+	}
+
+};
+
+#endif
