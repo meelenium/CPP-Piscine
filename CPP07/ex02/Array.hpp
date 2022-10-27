@@ -40,13 +40,15 @@ Array<T>::Array( unsigned int _size) {
 }
 
 template<typename T>
-Array<T>::Array( const Array<T> &obj ) {
+Array<T>::Array( const Array<T> &obj ) : _array(nullptr) {
 	*this = obj;
 }
 
 template<typename T>
 Array<T> &Array<T>::operator = ( const Array<T> &obj ) {
-	delete[] this->_array;
+    if(this->_array) {
+	    delete[] this->_array;
+    }
 	this->_array = new T[obj.size()];
 	this->_size = obj._size;
 	for( int i = 0; i < this->size(); i++ ) {
