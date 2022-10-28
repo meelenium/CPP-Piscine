@@ -6,32 +6,32 @@
 
 Span::Span( void ) {
 	this->_maxSize = 0;
+	this->_sizeCount = 0;
+}
+
+Span::Span( unsigned int _maxSize) : _vNumbers( _maxSize ) {
+	this->_maxSize = _maxSize;
+	this->_sizeCount = 0;
 }
 
 Span::Span( const Span &obj ) {
 	*this = obj;
 }
 
-Span::Span( unsigned int _maxSize) {
-	this->_maxSize = _maxSize;
-}
-
 Span &Span::operator = ( const Span &obj ) {
 	this->_maxSize = obj._maxSize;
+	this->_sizeCount = obj._sizeCount;
 	this->_vNumbers.clear();
-	this->_vNumbers = obj._vNumbers;
+	this->_vNumbers = obj.getCollection();
 	return ( *this );
 }
 
-int Span::getMaxSize() {
-	return ( this->_maxSize );
-}
-
 void Span::addNumber( int number ) {
-	if( this->_vNumbers.size() == static_cast<size_t>( this->getMaxSize() ) ) {
+	if( this->_sizeCount == this->getMaxSize() ) {
 		throw MaxSizeException();
 	}
-	this->_vNumbers.push_back( number );
+	this->_vNumbers[_sizeCount] = number;
+	this->_sizeCount++;
 }
 
 void Span::fastAdd( std::vector<int>::iterator begin, std::vector<int>::iterator end ) {
@@ -47,9 +47,9 @@ int Span::shortestSpan( void ) {
 
 	shortest = 0;
 	checkSize();
-	for ( std::vector<int>::iterator it = this->_vNumbers.begin(); it != this->_vNumbers.end() - 1; it++ ) {
-		shortestTmp = *std::max_element( it, this->_vNumbers.end() )
-					- *std::min_element( it, this->_vNumbers.end() );
+	for ( std::vector<int>::iterator it = this->_vNumbers.begin(); it != this->getEnd() - 1; it++ ) {
+		shortestTmp = *std::max_element( it, this->getEnd() )
+					- *std::min_element( it, this->getEnd() );
 		if(it == this->_vNumbers.begin()) {
 			shortest = shortestTmp;
 		} else if( shortestTmp < shortest ) {
@@ -61,14 +61,30 @@ int Span::shortestSpan( void ) {
 
 int Span::longestSpan( void ) {
 	checkSize();
-	return ( *std::max_element( this->_vNumbers.begin(), this->_vNumbers.end() )
-		- *std::min_element( this->_vNumbers.begin(), this->_vNumbers.end() ));
+	return ( *std::max_element( this->getBegin(), this->getEnd() )
+		- *std::min_element( this->getBegin(), this->getEnd() ));
 }
 
 void Span::checkSize( void ) {
-	if( this->_vNumbers.size() <= 1 ) {
+	if( this->_sizeCount <= 1 ) {
 		throw CollectionSizeException();
 	}
+}
+
+unsigned int Span::getMaxSize() const {
+	return (this->_maxSize);
+}
+
+std::vector<int>::iterator Span::getBegin( void ) {
+	return ( this->_vNumbers.begin() );
+}
+
+std::vector<int>::iterator Span::getEnd( void ) {
+	return ( this->_vNumbers.end() );
+}
+
+std::vector<int> Span::getCollection( void ) const {
+	return ( this->_vNumbers );
 }
 
 const char *Span::MaxSizeException::what() const throw() {

@@ -17,10 +17,10 @@ int main( void ) {
 		sp.addNumber(11);
 		std::cout << "Shortest: " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest: " << sp.longestSpan() << std::endl;
-		std::cout << "====================" << std::endl;
 	} catch ( const std::exception &ex ) {
 		std::cout << ex.what() << std::endl;
 	}
+	std::cout << "====================" << std::endl;
 	std::cout << std::endl;
 
 	try {
@@ -35,10 +35,25 @@ int main( void ) {
 		Span spTwo = sp;
 		std::cout << "Shortest: " << spTwo.shortestSpan() << std::endl;
 		std::cout << "Longest: " << spTwo.longestSpan() << std::endl;
-		std::cout << "====================" << std::endl;
 	} catch ( const std::exception &ex ) {
 		std::cout << ex.what() << std::endl;
 	}
+	std::cout << "====================" << std::endl;
+	std::cout << std::endl;
+
+	try {
+		std::cout << "\"fastAdd()\" test" << std::endl;
+		std::cout << "====================" << std::endl;
+		Span sp(15);
+		sp.fastAdd(sp.getBegin(), sp.getEnd());
+		std::vector<int> copyCollection = sp.getCollection();
+		for( size_t i = 0; i < copyCollection.size(); i++ ) {
+			std::cout << "[" << i <<  "]: " << copyCollection[i] << std::endl;
+		}
+	} catch ( const std::exception &ex ) {
+		std::cout << ex.what() << std::endl;
+	}
+	std::cout << "====================" << std::endl;
 	std::cout << std::endl;
 
 	try {

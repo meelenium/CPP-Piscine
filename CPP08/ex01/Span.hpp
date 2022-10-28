@@ -19,8 +19,11 @@ public:
 
 	Span &operator = ( const Span &obj );
 
-	int getMaxSize( void );
-	int getSize( void );
+	unsigned int getMaxSize( void ) const;
+	int getSize( void ) const;
+	std::vector<int> getCollection( void ) const;
+	std::vector<int>::iterator getBegin( void );
+	std::vector<int>::iterator getEnd( void );
 
 	void addNumber( int number );
 	void fastAdd( std::vector<int>::iterator begin, std::vector<int>::iterator end );
@@ -29,7 +32,8 @@ public:
 
 private:
 	std::vector<int> _vNumbers;
-	int _maxSize;
+	unsigned int _sizeCount;
+	unsigned int _maxSize;
 
 	void checkSize( void );
 
