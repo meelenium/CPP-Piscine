@@ -46,32 +46,37 @@ int Span::shortestSpan( void ) {
 	unsigned int shortestTmp;
 
 	shortest = 0;
-	if( this->_vNumbers.empty() ) {
-		return ( shortest );
-	} else {
-		for ( std::vector<int>::iterator it = this->_vNumbers.begin(); it != this->_vNumbers.end() - 1; it++ ) {
-			shortestTmp = *std::max_element( it, this->_vNumbers.end() )
-						  - *std::min_element( it, this->_vNumbers.end() );
-			if(it == this->_vNumbers.begin()) {
-				shortest = shortestTmp;
-			} else if( shortestTmp < shortest ) {
-				shortest = shortestTmp;
-			}
+	checkSize();
+	for ( std::vector<int>::iterator it = this->_vNumbers.begin(); it != this->_vNumbers.end() - 1; it++ ) {
+		shortestTmp = *std::max_element( it, this->_vNumbers.end() )
+					- *std::min_element( it, this->_vNumbers.end() );
+		if(it == this->_vNumbers.begin()) {
+			shortest = shortestTmp;
+		} else if( shortestTmp < shortest ) {
+			shortest = shortestTmp;
 		}
 	}
 	return ( shortest );
 }
 
 int Span::longestSpan( void ) {
-	if( this->_vNumbers.empty() ) {
-		return ( 0 );
-	}
+	checkSize();
 	return ( *std::max_element( this->_vNumbers.begin(), this->_vNumbers.end() )
 		- *std::min_element( this->_vNumbers.begin(), this->_vNumbers.end() ));
 }
 
+void Span::checkSize( void ) {
+	if( this->_vNumbers.size() <= 1 ) {
+		throw CollectionSizeException();
+	}
+}
+
 const char *Span::MaxSizeException::what() const throw() {
 	return ( "[EXCEPTION]\nCollection may be overflow");
+}
+
+const char *Span::CollectionSizeException::what() const throw() {
+	return ( "[EXCEPTION]\nCollection have size <= 1");
 }
 
 Span::~Span( void ) {

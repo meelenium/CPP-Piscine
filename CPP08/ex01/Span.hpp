@@ -31,7 +31,13 @@ private:
 	std::vector<int> _vNumbers;
 	int _maxSize;
 
+	void checkSize( void );
+
 	class MaxSizeException : public std::exception {
+		const char *what() const throw();
+	};
+
+	class CollectionSizeException : public std::exception {
 		const char *what() const throw();
 	};
 
