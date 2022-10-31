@@ -37,7 +37,7 @@ void Span::addNumber( int number ) {
 void Span::fastAdd( std::vector<int>::iterator begin, std::vector<int>::iterator end ) {
 	srand( time( NULL ) );
 	for( ; begin != end; begin++ ) {
-		*begin = rand() % 101;
+		*begin = rand() % std::numeric_limits<int>::max();
 	}
 }
 

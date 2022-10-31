@@ -15,9 +15,8 @@ typename T::iterator easyFind( T &container, int num ) {
 	it = find(container.begin(), container.end(), num);
 	if(it == container.end()) {
 		throw std::out_of_range("[EXCEPTION]\nData not found");
-	} else {
-		return ( it );
 	}
+	return ( it );
 }
 
 #endif
